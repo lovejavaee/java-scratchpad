@@ -1,8 +1,10 @@
-# About
+# Filtre
+
+_02 Apr 2011_
 
 Filtre is a configurable IP address filter for J2EE web applications.
 
-# Usage
+## Usage
 
 By convention, Filtre will attempt to load its configuration from `filtre.properties` stored on the root of the classpath:
 
