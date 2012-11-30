@@ -1,6 +1,6 @@
 # A Configurable IP Address Servlet Filter
 
-_02 Apr 2011_
+_2 Apr 2011_
 
 
 ## Usage
