@@ -1,8 +1,10 @@
-# About
+# Functional JDBC database interaction in Java
+
+_26 Apr 2012_
 
 This a collection of Java's take on warm, fuzzy things, to demonstrate environment injection and output accumulation.
 
-# Reader
+## Reader
 
 A reader encodes an action to take when given some environmental context.  A `JdbcAction<A>` encapsulates a function which, given a `Connection`, produces an instance of type `A`.  The encapsulated function implements the `Function1` interface:
 
@@ -68,10 +70,10 @@ A `JdbcAction` can be executed in serial with another `JdbcAction`:
 
 [See here](https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Environment_monad) for more info.
 
-# Writer
+## Writer
 
 A writer encodes an action which produces some kind of composable output.  [See here](https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Writer_monad) for more info.
 
-# ReaderWriter
+## ReaderWriter
 
 Readers and writers can be useful in conjunction to encode actions, which produce some kind of composable output, to take when given some environmental context.
