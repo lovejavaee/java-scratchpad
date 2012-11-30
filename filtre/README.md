@@ -1,8 +1,7 @@
-# Filtre
+# A Configurable IP Address Servlet Filter
 
 _02 Apr 2011_
 
-Filtre is a configurable IP address filter for J2EE web applications.
 
 ## Usage
 
@@ -33,7 +32,7 @@ Filtre is configured through three init-param elements:
 * `blackList`: a comma-separated list of IP addresses to be denied access
 * `configLocation`: the path of a properties file containing the `whiteList` or `blackList` properties
 
-# Address format
+## Address format
 
 Currently supported are IPv4 addresses in CIDR notation:
 
