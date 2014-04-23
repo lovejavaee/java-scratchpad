@@ -1,4 +1,4 @@
-# Exercise: Functional Linked Lists in Java
+# Exercise: functional linked lists in Java
 
 Given the interface `List`:
 
