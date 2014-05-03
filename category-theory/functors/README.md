@@ -109,7 +109,7 @@ System.out.println(
 ); // nothing
 ```
 
-The expression `(x) -> x + 20` is syntatic sugar in Java 8 for a `Fn1<Integer,Integer>` instance:
+The expression `(x) -> x + 20` is syntatic sugar in Java 8 for a `Fn1<Integer,Integer>` instance, since it is a class with exactly one method:
 
 ```java
 new Fn1<Integer,Integer>() {
@@ -123,7 +123,7 @@ When using `map` on `just(1)`, we start with an instance of type `Maybe<Int>` an
 
 When we then use `map` to apply the function `(x) -> x * 2`, we end up with a `Maybe<Int>` whose value `a` is `42`.
 
-Since `Maybe<A>` defines a method `<B> Maybe<B> map(Fn1<A,B> f)`, `Maybe` is a functor.
+Since `Maybe<A>` implements a method `<B> Maybe<B> map(Fn1<A,B> f)`, `Maybe` is a functor.
 
 ## List
 
@@ -199,11 +199,11 @@ When using `map` on `cons(1, ...)`, we start with an instance of type `List<Int>
 
 When we then use `map` to apply the function `(x) -> x * 2`, we end up with a `List<Int>` representing `[42, 42, 44, 46]`.
 
-Since `List<A>` defines a method `<B> List<B> map(Fn1<A,B> f)`, `List` is a functor.
+Since `List<A>` implements a method `<B> List<B> map(Fn1<A,B> f)`, `List` is a functor.
 
 # java.util.List
 
-Though Java's built-in `List` interface doesn't extend the `Functor` interface, it's easy to write simple wrapper data structures that gets us most of the way there.
+Though Java's built-in `List` interface doesn't extend the `Functor` interface, it's easy to write a simple wrapper that gets us most of the way there.
 
 ```java
 public class ListFunctor<A> implements Functor<A,ListFunctor<?>> {
@@ -245,4 +245,4 @@ System.out.println(
   ); // []
 ```
 
-Since `ListFunctor<A>` defines a method `<B> ListFunctor<B> map(Fn1<A,B> f)`, `ListFunctor` is a functor.
+Since `ListFunctor<A>` implements a method `<B> ListFunctor<B> map(Fn1<A,B> f)`, `ListFunctor` is a functor.
