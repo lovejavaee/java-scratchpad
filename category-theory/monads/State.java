@@ -33,4 +33,7 @@ public class State<S,A> implements Monad<A,State<?,?>> {
     return new State<S,B>(fb);
   }
 
+  public static <S,A> State<S,A> apply(Fn1<S,Tuple2<A,S>> _f) {
+    return new State<S,A>(_f);
+  }
 }

@@ -27,4 +27,7 @@ public class ListMonad<A> implements Monad<A,ListMonad<?>> {
     return l.toString();
   }
 
+  public static <A> ListMonad<A> apply(java.util.List<A> _l) {
+    return new ListMonad<A>(_l);
+  }
 }

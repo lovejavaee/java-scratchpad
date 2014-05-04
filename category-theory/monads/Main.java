@@ -24,7 +24,7 @@ public class Main {
     );
 
     System.out.println(
-      new ListMonad<Integer>(java.util.Arrays.asList(1,1,2,3))
+      ListMonad.<Integer>apply(java.util.Arrays.asList(1,1,2,3))
           .map((x) -> x + 20)
           .map((x) -> x * 2)
           .flatMap((x) -> {
@@ -34,19 +34,28 @@ public class Main {
     );
 
     System.out.println(
-      new State<java.util.List<String>,Integer>(
-          new Fn1<java.util.List<String>,Tuple2<Integer,java.util.List<String>>>() {
-            public Tuple2<Integer,java.util.List<String>> apply(java.util.List<String> log) {
-              log.add("and one");
-              return new Tuple2<Integer,java.util.List<String>>(1, log);
-            }})
-          .map((x) -> x + 20)
-          .map((x) -> x * 2)
-          .f.apply(new java.util.LinkedList())
-          //.flatMap((x) -> {
-          //  if (x != 42) return new ListMonad<Integer>(java.util.Arrays.asList());
-          //  else return new ListMonad<Integer>(java.util.Arrays.asList(x));
-          //})
+      State.<java.util.List<String>,Integer>apply(
+             (log) -> {
+               log.add("and one");
+               return new Tuple2<Integer,java.util.List<String>>(1, log);
+             }
+           )
+           .map((x) -> x + 20)
+           .map((x) -> x * 2)
+           .flatMap((x) ->
+             State.<java.util.List<String>,Integer>apply(
+                    (log) -> {
+                      if (x != 42) {
+                        log.add("boo");
+                        return Tuple2.<Integer,java.util.List<String>>apply(-999, log);
+                      } else {
+                        log.add("yay");
+                        return Tuple2.<Integer,java.util.List<String>>apply(x, log);
+                      }
+                    }
+                  )
+           )
+           .f.apply(new java.util.LinkedList<String>())
     );
 
   }

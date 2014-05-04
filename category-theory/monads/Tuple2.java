@@ -8,11 +8,11 @@ public class Tuple2<A,B> {
     _2 = __2;
   }
 
-  public static <A,B> Tuple2<A,B> apply(A __1, B __2) {
-    return new Tuple2<A,B>(__1, __2);
-  }
-
   public String toString() {
     return "(" + _1.toString() + ", " + _2.toString() + ")";
+  }
+
+  public static <A,B> Tuple2<A,B> apply(A __1, B __2) {
+    return new Tuple2<A,B>(__1, __2);
   }
 }
