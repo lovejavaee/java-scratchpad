@@ -11,7 +11,8 @@ public class Main {
              if (x != 42) return Maybe.nothing();
              else return Maybe.just(x);
            })
-    );
+    ); // just(42)
+
 
     System.out.println(
       List.cons(1, List.cons(1, List.cons(2, List.cons(3, List.nil()))))
@@ -21,7 +22,7 @@ public class Main {
             if (x != 42) return List.nil();
             else return List.cons(x, List.nil());
           })
-    );
+    ); // cons(42, cons(42, nil))
 
     System.out.println(
       ListMonad.<Integer>apply(java.util.Arrays.asList(1,1,2,3))
@@ -31,7 +32,7 @@ public class Main {
             if (x != 42) return new ListMonad<Integer>(java.util.Arrays.asList());
             else return new ListMonad<Integer>(java.util.Arrays.asList(x));
           })
-    );
+    ); // [42, 42]
 
     System.out.println(
       State.<java.util.List<String>,Integer>apply(
@@ -56,7 +57,7 @@ public class Main {
                   )
            )
            .f.apply(new java.util.LinkedList<String>())
-    );
+    ); // (42, [and one, yay])
 
   }
 
