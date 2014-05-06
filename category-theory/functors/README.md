@@ -51,14 +51,14 @@ If we imagine that `Maybe` represents the category of optional values, we can se
 
 
 ```
-.------------------.         .----------------------------------.
-|  Category *      |         |        Category Maybe<*>         |
-|------------------|         |----------------------------------|
-| Int              |         |   Maybe<Int>                     |
-| String           |         |   Maybe<String>                  |
-| Fn1<Int,Int>    ~~~~ map ~~~~> Fn1<Maybe<Int>,Maybe<Int>>     |
-| Fn1<Int,String> ~~~~ map ~~~~> Fn1<Maybe<Int>,Maybe<String>>  |
-'------------------'         '----------------------------------'
+.------------------.         .--------------------------------------.
+|  Category *      |         |        Category Maybe<*>             |
+|------------------|         |--------------------------------------|
+| Int              |         |   Maybe<Integer>                     |
+| String           |         |   Maybe<String>                      |
+| Fn1<Int,Int>    ~~~~ map ~~~~> Fn1<Maybe<Integer>,Maybe<Integer>> |
+| Fn1<Int,String> ~~~~ map ~~~~> Fn1<Maybe<Integer>,Maybe<String>>  |
+'------------------'         '--------------------------------------'
 ```
 
 In Java, we can implement `Maybe` as a single class that abstracts over `Just` and `Nothing`:
@@ -119,9 +119,9 @@ new Fn1<Integer,Integer>() {
 }
 ``` 
 
-When using `map` on `just(1)`, we start with an instance of type `Maybe<Int>` and apply the function `(x) -> x + 20` of type `Fn1<Int,Int>`, resulting in an instance of type `Maybe<Int>` whose value `a` is `21`.
+When using `map` on `just(1)`, we start with an instance of type `Maybe<Integer>` and apply the function `(x) -> x + 20` of type `Fn1<Int,Int>`, resulting in an instance of type `Maybe<Integer>` whose value `a` is `21`.
 
-When we then use `map` to apply the function `(x) -> x * 2`, we end up with a `Maybe<Int>` whose value `a` is `42`.
+When we then use `map` to apply the function `(x) -> x * 2`, we end up with a `Maybe<Integer>` whose value `a` is `42`.
 
 Since `Maybe<A>` implements a method `<B> Maybe<B> map(Fn1<A,B> f)`, `Maybe` is a functor.
 
@@ -133,14 +133,14 @@ If we imagine that `List` represents the category of lists of values, we can see
 
 
 ```
-.------------------.         .--------------------------------.
-|  Category *      |         |       Category List<*>         |
-|------------------|         |--------------------------------|
-| Int              |         |   List<Int>                    |
-| String           |         |   List<String>                 |
-| Fn1<Int,Int>    ~~~~ map ~~~~> Fn1<List<Int>,List<Int>>     |
-| Fn1<Int,String> ~~~~ map ~~~~> Fn1<List<Int>,List<String>>  |
-'------------------'         '--------------------------------'
+.------------------.         .------------------------------------.
+|  Category *      |         |       Category List<*>             |
+|------------------|         |------------------------------------|
+| Int              |         |   List<Integer>                    |
+| String           |         |   List<String>                     |
+| Fn1<Int,Int>    ~~~~ map ~~~~> Fn1<List<Integer>,List<Integer>> |
+| Fn1<Int,String> ~~~~ map ~~~~> Fn1<List<Integer>,List<String>>  |
+'------------------'         '------------------------------------'
 ```
 
 In Java, we can implement `List` as a single class that abstracts over `Cons` and `Nil`:
@@ -195,9 +195,9 @@ System.out.println(
 ); // nil
 ```
 
-When using `map` on `cons(1, ...)`, we start with an instance of type `List<Int>`, apply the function `(x) -> x + 20` of type `Fn1<Int,Int>`, resulting in an instance of type `List<Int>` representing `[21, 21, 22, 23]`.
+When using `map` on `cons(1, ...)`, we start with an instance of type `List<Integer>`, apply the function `(x) -> x + 20` of type `Fn1<Int,Int>`, resulting in an instance of type `List<Integer>` representing `[21, 21, 22, 23]`.
 
-When we then use `map` to apply the function `(x) -> x * 2`, we end up with a `List<Int>` representing `[42, 42, 44, 46]`.
+When we then use `map` to apply the function `(x) -> x * 2`, we end up with a `List<Integer>` representing `[42, 42, 44, 46]`.
 
 Since `List<A>` implements a method `<B> List<B> map(Fn1<A,B> f)`, `List` is a functor.
 
