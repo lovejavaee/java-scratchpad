@@ -14,6 +14,10 @@ public class List<A> implements Monad<A,List<?>> {
     else return cons(f.apply(h), t.map(f));
   }
 
+  public List<A> unit(A a) {
+    return cons(a, nil());
+  }
+
   @SuppressWarnings("unchecked")
   public <B> List<B> flatMap(Fn1<A,List<?>> f) {
     if (h == null) return nil();

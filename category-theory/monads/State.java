@@ -19,6 +19,16 @@ public class State<S,A> implements Monad<A,State<?,?>> {
     return new State<S,B>(fb);
   }
 
+  public State<S,A> unit(A a) {
+    return apply(
+      new Fn1<S,Tuple2<A,S>>() {
+        public Tuple2<A,S> apply(S s) {
+          return Tuple2.apply(a,s);
+        }
+      }
+    );
+   }
+
   @SuppressWarnings("unchecked")
   public <B> State<S,B> flatMap(Fn1<A,State<?,?>> g) {
     Fn1<S,Tuple2<B,S>> fb =
