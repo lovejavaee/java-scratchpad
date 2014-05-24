@@ -2,6 +2,10 @@ public class Main {
 
   // Java 8 (with lambda expressions)
   public static void main(String[] args) {
+
+    System.out.println(
+      Monads.eta(42, Maybe.nothing())
+    ); // just(42)
     
     System.out.println(
       Maybe.just(1)
