@@ -11,8 +11,8 @@ public class HttpHead {
 		String url = "http://dumps.wikimedia.org/other/wikidata/20150209.json.gz";
 		Map<String, List<String>> headers = getHeaders(new URL(url));
 
-		String type = headers.get("Content-Type").get(0);
-		String size = headers.get("Content-Length").get(0);
+		String type = headers.get("Content-Type").get(0); // application/octet-stream
+		String size = headers.get("Content-Length").get(0); // 4071269760
 
 		System.out.println("Content type: " + type);
 		System.out.println("Content length: " + size);
